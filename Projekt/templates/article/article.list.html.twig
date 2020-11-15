@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Assigned to me</h1>
+    {% for assignedArticle in assignedArticles %}
+        {{ assignedArticle.id }}
+    {% endfor %}
+    <h1>Other Articles</h1>
+    {% for otherArticles in otherArticles %}
+        {{ otherArticles.id }}
+    {% endfor %}
+{% endblock %}
