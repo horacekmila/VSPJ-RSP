@@ -11,9 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractController
 {
-    /**
-     * @var ArticleRepository
-     */
+    /** @var ArticleRepository */
     private $articleRepository;
 
     public function __construct(ArticleRepository $articleRepository)
@@ -21,9 +19,7 @@ class DashboardController extends AbstractController
         $this->articleRepository = $articleRepository;
     }
 
-    /**
-     * @Route("/dashbord",name="app_dashboard")
-     */
+    /** @Route("/dashbord",name="app_dashboard") */
     public function index(): Response
     {
         $articles = $this->articleRepository->findAll();

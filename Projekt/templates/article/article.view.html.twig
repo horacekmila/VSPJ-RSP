@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+   Informace o Článku
+   <br>Titulek:{{ article.getTitle}}
+   <br> Id:{{ article.getId }}
+   <br> Author:{{ article.getCreatedBy.firstname }}
+{% endblock %}

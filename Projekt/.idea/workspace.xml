@@ -27,23 +27,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="043a050f-e773-427c-a129-a94aa5b5ed83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Enum/ArticleEnums.php" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change afterPath="$PROJECT_DIR$/src/Form/ArticleType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/article/article.edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/article/article.submit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vspj-article.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vspj-article.iml" afterDir="false" />
+>>>>>>> f198203
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Command/DummyDataCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/DummyDataCommand.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Command/InitApplicationCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Command/InitApplicationCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/State.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/State.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/StateGroup.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/StateGroup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Enum/ArticleEnums.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/ArticleRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ArticleRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/ArticleService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/ArticleService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/article.list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/article.list.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -149,6 +163,7 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
+      <path value="$PROJECT_DIR$/vendor/elao/enum" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kCpV2F4P3Oz7KuXFEfT8oJCGmg" />
@@ -174,7 +189,7 @@
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -190,11 +205,15 @@
       <workItem from="1605262426961" duration="1446000" />
       <workItem from="1605275689885" duration="15085000" />
       <workItem from="1605364071646" duration="3218000" />
+      <workItem from="1605442981166" duration="4470000" />
+      <workItem from="1605453917811" duration="6838000" />
+      <workItem from="1605545906786" duration="24000" />
+      <workItem from="1605545939209" duration="816000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -213,29 +232,39 @@
                   </entry>
                 </map>
               </option>
-              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2661" y="253" width="412" height="645" key="#com.intellij.ide.util.MemberChooser" timestamp="1605366910434">
-      <screen x="1920" y="41" width="1920" height="1080" />
+    <state x="785" y="234" width="412" height="629" key="#com.intellij.ide.util.MemberChooser" timestamp="1605560494657">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2661" y="253" key="#com.intellij.ide.util.MemberChooser/1920.41.1920.1080/3840.0.1680.1050/0.68.1920.1053@1920.41.1920.1080" timestamp="1605366910434" />
+    <state x="785" y="234" width="412" height="629" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605560494657" />
     <state x="785" y="234" width="412" height="645" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1605361643633" />
     <state x="2688" y="340" width="476" height="781" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605365969181">
       <screen x="1920" y="41" width="1920" height="1080" />
     </state>
     <state x="2688" y="340" width="476" height="781" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.41.1920.1080/3840.0.1680.1050/0.68.1920.1053@1920.41.1920.1080" timestamp="1605365969181" />
     <state x="811" y="344" width="351" height="433" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1605358487780" />
-    <state x="2583" y="293" width="609" height="597" key="NewPhpClassDialog" timestamp="1605366681108">
-      <screen x="1920" y="41" width="1920" height="1080" />
+    <state x="729" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605547198863">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="729" y="311" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605547198863" />
+    <state x="710" y="273" width="609" height="597" key="NewPhpClassDialog" timestamp="1605548597036">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2583" y="293" width="609" height="597" key="NewPhpClassDialog/1920.41.1920.1080/3840.0.1680.1050/0.68.1920.1053@1920.41.1920.1080" timestamp="1605366681108" />
+    <state x="710" y="273" key="NewPhpClassDialog/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605548597036" />
     <state x="710" y="273" width="561" height="568" key="NewPhpClassDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1605361003531" />
+    <state x="2589" y="280" width="572" height="636" key="VCS.ChangeListViewerDialog" timestamp="1605534706253">
+      <screen x="1920" y="41" width="1920" height="1080" />
+    </state>
+    <state x="2589" y="280" width="572" height="636" key="VCS.ChangeListViewerDialog/1920.41.1920.1080/3840.0.1680.1050/0.68.1920.1053@1920.41.1920.1080" timestamp="1605534706253" />
     <state x="591" y="289" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1605215363413">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -244,14 +273,20 @@
       <screen x="1920" y="41" width="1920" height="1080" />
     </state>
     <state x="2533" y="212" width="683" height="771" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.41.1920.1080/3840.0.1680.1050/0.68.1920.1053@1920.41.1920.1080" timestamp="1605366270575" />
-    <state x="2648" y="514" width="464" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605364807495">
-      <screen x="1920" y="41" width="1920" height="1080" />
+    <state x="773" y="488" width="437" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605546742791">
+      <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="2648" y="514" width="464" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.41.1920.1080/3840.0.1680.1050/0.68.1920.1053@1920.41.1920.1080" timestamp="1605364807495" />
+    <state x="2648" y="473" width="464" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/72.27.1848.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605456487058" />
+    <state x="773" y="488" width="437" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/72.27.1848.1053/1920.0.1920.1080@72.27.1848.1053" timestamp="1605546742791" />
     <state x="2525" y="333" width="709" height="522" key="find.popup" timestamp="1605367044624">
       <screen x="1920" y="41" width="1920" height="1080" />
     </state>
     <state x="2525" y="333" width="709" height="522" key="find.popup/1920.41.1920.1080/3840.0.1680.1050/0.68.1920.1053@1920.41.1920.1080" timestamp="1605367044624" />
+    <state x="2712" y="312" width="325" height="462" key="refactoring.ChangeSignatureDialog" timestamp="1605454709078">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2712" y="312" width="325" height="462" key="refactoring.ChangeSignatureDialog/72.27.1848.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1605454709078" />
     <state x="660" y="252" key="run.anything.popup" timestamp="1605283382455">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>

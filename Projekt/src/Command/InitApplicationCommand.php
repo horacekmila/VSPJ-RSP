@@ -9,7 +9,8 @@ use App\Entity\Role;
 use App\Entity\State;
 use App\Entity\StateGroup;
 use App\Entity\User;
-use App\Enum\ArticleEnums;
+use App\Enum\StateEnums;
+use App\Enum\RoleEnums;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,8 +20,8 @@ class InitApplicationCommand extends Command
 {
     protected static $defaultName = 'app:init-app';
 
-    private const USERNAME = 'root';
-    private const PASSWORD = 'password';
+    public const USERNAME = 'root';
+    public const PASSWORD = 'password';
 
     /**
      * @var EntityManagerInterface
@@ -33,13 +34,17 @@ class InitApplicationCommand extends Command
         $this->entityManager = $entityManager;
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
-            $adminRole = $this->createRoles();
-            $root = $this->createRoot($adminRole);
+            $roles = $this->createRoles();
+            $root = $this->createRoot($roles);
             $states = $this->createStates();
-            $this->createArticles($states, $root);
         } catch(\Exception $e) {
             dd($e);
             return Command::FAILURE;
@@ -47,28 +52,40 @@ class InitApplicationCommand extends Command
         return Command::SUCCESS;
     }
 
-    private function createRoot(Role $role): User
+    /**
+     * @param Role[] $roles
+     * @return User
+     */
+    private function createRoot(array $roles): User
     {
         $user = (new User())
             ->setFirstname(self::USERNAME)
-            ->setLastname('rootovič')
+            ->setLastname(self::USERNAME."ovič")
             ->setPassword(self::PASSWORD)
-            ->addRole($role);
+            ->addRole($roles[RoleEnums::ROLE_ADMIN]);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
         return $user;
     }
 
-    private function createRoles(): Role
+    /**
+     * @return Role[]
+     */
+    private function createRoles(): array
     {
-        $role = (new Role())
-            ->setName("ROLE_ADMIN")
-            ->setAlias("Administrátor");
-
-        $this->entityManager->persist($role);
+        $roleNames = RoleEnums::values();
+        $roles = [];
+        foreach($roleNames as $roleName) {
+            $role = (new Role())
+                ->setName($roleName)
+                ->setAlias($roleName."OVIČ");
+            $this->entityManager->persist($role);
+            $roles[$role->getName()] = $role;
+        }
         $this->entityManager->flush();
-        return $role;
+
+        return $roles;
     }
 
     /**
@@ -76,53 +93,15 @@ class InitApplicationCommand extends Command
      */
     private function createStates(): array
     {
-        $stateWIP = (new State())
-            ->setName(ArticleEnums::WIP);
-
-
-        $stateSubmited = (new State())
-            ->setName(ArticleEnums::SUBMITED);
-
-        $this->entityManager->persist($stateSubmited);
-
-        $stateGroup = (new StateGroup())
-            ->addNextState($stateSubmited);
-
-        $this->entityManager->persist($stateGroup);
-        $stateWIP->setNextStateGroup($stateGroup);
-
-        $this->entityManager->persist($stateWIP);
-
+        $stateNames = StateEnums::values();
+        $states = [];
+        foreach($stateNames as $stateName) {
+            $stateObject = (new State())
+                ->setName($stateName);
+            $states[$stateObject->getName()] = $stateObject;
+            $this->entityManager->persist($stateObject);
+        }
         $this->entityManager->flush();
-
-        return [
-            "WIP" => $stateWIP,
-            "Submited" => $stateSubmited
-        ];
-    }
-
-
-
-    /** Tohle dej do dummy data commandu
-     * @param array $states
-     * @param User $root
-     * @return Article[]
-     */
-    private function createArticles(array $states, User $root): array
-    {
-        $article = (new Article())
-            ->setTitle('Test #1')
-            ->setContent('Default content')
-            ->setAssigne($root)
-            ->setState($states[ArticleEnums::WIP])
-            ->setIsActive(true)
-            ->setEditable(true)
-            ->setVersion(1)
-            ->setCreatedBy($root);
-
-        $this->entityManager->persist($article);
-        $this->entityManager->flush();
-
-        return [$article];
+        return $states;
     }
 }

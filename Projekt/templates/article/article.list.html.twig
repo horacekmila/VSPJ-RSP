@@ -3,10 +3,14 @@
 {% block body %}
     <h1>Assigned to me</h1>
     {% for assignedArticle in assignedArticles %}
-        {{ assignedArticle.id }}
+        {{ assignedArticle.Title }}:
+        <a href={{ path("articlesarticle_view", {"article": assignedArticle.id}) }}><input type="button" value="View" /></a>
+        <a href={{ path("articlesarticle_edit", {"article": assignedArticle.id}) }}><input type="button" value="Edit" /></a>
+        <a href={{ path("articlesarticle_submit", {"article": assignedArticle.id}) }}><input type="button" value="Subbmit" /></a>
+        <br>
     {% endfor %}
     <h1>Other Articles</h1>
     {% for otherArticles in otherArticles %}
-        {{ otherArticles.id }}
+        <a>{{ otherArticles.id }}</a>
     {% endfor %}
 {% endblock %}

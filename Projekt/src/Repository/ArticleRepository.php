@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\User;
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -20,14 +21,15 @@ class ArticleRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param array $articles
+     * @param User $user
      * @return Article[]
      */
-    public function findExclArticles(array $articles): array
+    public function findNotAssignedArticles(User $user): array
     {
         $qb = $this->createQueryBuilder('a');
-        $qb->andWhere('a NOT IN (:articles)')
-            ->setParameter('articles', $articles);
+        $qb->andWhere('a.assigne != :user')
+            ->orWhere('a.assigne IS NULL')
+            ->setParameter('user', $user);
 
         return $qb->getQuery()->getResult();
     }
