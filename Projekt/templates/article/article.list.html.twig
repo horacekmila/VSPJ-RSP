@@ -1,16 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends 'base.html.twig'%}
 
 {% block body %}
-    <h1>Assigned to me</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="col-3">Nový článek</h1>
+            <a class="col-1" href={{ path("article_new") }}><button type="button" class="btn btn-info">Nový článek</button></a>
+        </div>
+        <h1>Moje články</h1>
     {% for assignedArticle in assignedArticles %}
-        {{ assignedArticle.Title }}:
-        <a href={{ path("articlesarticle_view", {"article": assignedArticle.id}) }}><input type="button" value="View" /></a>
-        <a href={{ path("articlesarticle_edit", {"article": assignedArticle.id}) }}><input type="button" value="Edit" /></a>
-        <a href={{ path("articlesarticle_submit", {"article": assignedArticle.id}) }}><input type="button" value="Subbmit" /></a>
-        <br>
+    <div class="col-12 space">
+        <div class="row">
+             <div class="col-1">{{ assignedArticle.Title }}:</div>
+            <div class="col-1"> <a href={{ path("article_view", {"article": assignedArticle.id}) }}><button class="btn btn-success col-12" type="button">Zobrazit</button></a></div>
+            <div class="col-1"><a href={{ path("article_edit", {"article": assignedArticle.id}) }}><button class="btn btn-warning col-12" type="button" >Upravit</button></a></div>
+            {% if is_granted('ROLE_EDITOR')%}
+                <div class="col-2"><a href={{ path("article_submit", {"article": assignedArticle.id}) }}><button class="btn btn-danger col-12" type="button">Poslat na recenzi</button></a></div>
+                <div class="col-2"><a href={{ path("article_submit", {"article": assignedArticle.id}) }}><button class="btn btn-danger col-12" type="button">Vrátit autorovy</button></a></div>
+                {% else %}
+                    <div class="col-2"><a href={{ path("article_submit", {"article": assignedArticle.id}) }}><button class="btn btn-danger col-12" type="button">Odeslat redakci</button></a></div>
+            {% endif %}
+             </div>
+    </div>
     {% endfor %}
-    <h1>Other Articles</h1>
+    <h1>Ostatní články</h1>
     {% for otherArticles in otherArticles %}
-        <a>{{ otherArticles.id }}</a>
+        <a>{{ otherArticles.Title }}</a><br>
     {% endfor %}
+    </div>
 {% endblock %}

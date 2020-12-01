@@ -1,0 +1,11 @@
+.space{
+    margin-top: 5px;
+}
+.main{
+    background-image: url("../imiges/background.jpg");
+    background-size: cover;
+
+}
+.tomiddle{
+    margin-top: 5%;
+}

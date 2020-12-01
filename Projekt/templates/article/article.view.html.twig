@@ -1,8 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   Informace o Článku
-   <br>Titulek:{{ article.getTitle}}
-   <br> Id:{{ article.getId }}
-   <br> Author:{{ article.getCreatedBy.firstname }}
+   <div class="container-fluid">
+      <h1>Informace o Článku</h1>
+
+      <table class="table table-striped ">
+         <tbody>
+         <tr>
+            <td>Id:</td>
+            <td>{{ article.getId }}</td>
+         </tr>
+         <tr>
+            <td>Author:</td>
+            <td>{{ article.getCreatedBy.firstname }}</td>
+         </tr>
+         <tr>
+            <td>Titulek:</td>
+            <td>{{ article.getTitle}}</td>
+         </tr>
+         <tr>
+            <td>Obsah:</td>
+            <td>{{ article.getContent}}</td>
+         </tr>
+         <tr>
+            <td>Verze:</td>
+            <td>{{ article.getVersion}}</td>
+         </tr>
+         </tbody>
+      </table>
+   </div>
 {% endblock %}

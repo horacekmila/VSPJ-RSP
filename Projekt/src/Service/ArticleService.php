@@ -6,15 +6,14 @@ namespace App\Service;
 
 use App\Entity\User;
 use App\Entity\Article;
+use App\Enum\RoleEnums;
+use App\Enum\StateEnums;
 use App\Repository\ArticleRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class ArticleService
 {
-    /**
-     * @var ArticleRepository
-     */
-    private $articleRepository;
+    private ArticleRepository $articleRepository;
 
     public function __construct(ArticleRepository $articleRepository)
     {
@@ -25,18 +24,30 @@ class ArticleService
      * @param UserInterface $user
      * @return Article[]
      */
-    public function getAssignedArticles(UserInterface $user): ?array
+    public function getArticlesByRole(UserInterface $user): array
     {
-        //TODO: again typo, double e => assignee
-        return $this->articleRepository->findBy(["assigne" => $user]);
+        if ($user->hasRole(RoleEnums::ROLE_WRITER) || $user->hasRole(RoleEnums::ROLE_REVIEWER)) {
+            return $this->articleRepository->findBy(["assigne" => $user]);
+        }
+        if ($user->hasRole(RoleEnums::ROLE_EDITOR)) {
+            return $this->articleRepository->findExcludeStates([StateEnums::WORK_IN_PROGRESS, StateEnums::INAPPROPRIAT_THEME]);
+        }
+        return [];
     }
 
     /**
-     * @param User $user
-     * @return array
+     * @param Article[] $articles
+     * @return Article[]
      */
-    public function getNotAssignedArticles(User $user): array
+    public function getArticlesExclude(array $articles): array
     {
-        return $this->articleRepository->findNotAssignedArticles($user);
+        if (empty($articles)) {
+            return $this->articleRepository->findAll();
+        }
+        $ids = [];
+        foreach($articles as $article) {
+            $ids[] = $article->getId();
+        }
+        return $this->articleRepository->findExcludeIds($ids);
     }
 }

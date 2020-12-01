@@ -414,4 +414,13 @@ class User implements UserInterface
     {
         $this->setUpdatedAt(new \DateTime("now"));
     }
+
+    public function hasRole($role): bool
+    {
+        if ($role instanceof Role)
+        {
+            return $this->roles->contains($role);
+        }
+        return in_array($role, $this->getRoles());
+    }
 }

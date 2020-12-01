@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Article;
+use App\Entity\State;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\User;
@@ -34,32 +35,30 @@ class ArticleRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    // /**
-    //  * @return Article[] Returns an array of Article objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @param string[] $states
+     * @return Article[]
+     */
+    public function findExcludeStates(array $states): array
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $qb = $this->createQueryBuilder("a");
+        $qb->leftJoin(State::class, "s","with", 's.id = a.state')
+            ->andWhere('s.name NOT IN (:states)')
+            ->setParameter('states', $states);
 
-    /*
-    public function findOneBySomeField($value): ?Article
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $qb->getQuery()->getResult();
     }
-    */
+
+    /**
+     * @param int[] $ids
+     * @return Article[]
+     */
+    public function findExcludeIds(array $ids): array
+    {
+        $qb = $this->createQueryBuilder("a");
+        $qb->andWhere("a.id NOT IN (:ids)")
+            ->setParameter("ids", $ids);
+
+        return $qb->getQuery()->getResult();
+    }
 }
