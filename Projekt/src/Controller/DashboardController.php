@@ -11,6 +11,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractController
 {
+    /** @Route("/",name="app_main") */
+    public function firstpage(): Response
+    {
+        $articles = $this->articleRepository->findAll();
+        return $this->render("mainPage/firstpage.html.twig", [
+            "articles" => $articles
+        ]);
+    }
     /** @var ArticleRepository */
     private $articleRepository;
 

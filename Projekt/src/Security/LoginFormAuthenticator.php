@@ -65,7 +65,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['firstname' => $credentials['firstname']]);
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(['id' => $credentials['firstname']]);
 
         if (!$user) {
             throw new CustomUserMessageAuthenticationException('Firstname could not be found.');

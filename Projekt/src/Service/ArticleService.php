@@ -30,7 +30,7 @@ class ArticleService
             return $this->articleRepository->findBy(["assigne" => $user]);
         }
         if ($user->hasRole(RoleEnums::ROLE_EDITOR)) {
-            return $this->articleRepository->findExcludeStates([StateEnums::WORK_IN_PROGRESS, StateEnums::INAPPROPRIAT_THEME]);
+            return $this->articleRepository->findExcludeStates([StateEnums::WORK_IN_PROGRESS, StateEnums::INAPPROPRIAT_THEME, StateEnums::IN_REVIEW]);
         }
         return [];
     }

@@ -20,22 +20,45 @@
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href={{ path("app_dashboard") }}>Domů</a>
+                        <a class="nav-link" href={{ path("app_main") }}>Domů</a>
                     </li>
                     <li class="nav-item active">
-                        {% if is_granted('ROLE_WRITER') %}<a class="nav-link" href={{ path("articles_list") }}>Články</a>{% endif %}
-                        {% if is_granted('ROLE_EDITOR') %}<a class="nav-link" href={{ path("articles_list") }}>Články</a>{% endif %}
+                        <a class="nav-link" href={{ path("app_dashboard") }}>Archív</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href={{ path("articles_list") }}>Časopis</a>
+                        {% if is_granted('ROLE_WRITER') or is_granted("ROLE_EDITOR") %}<a class="nav-link" href={{ path("articles_list") }}>Články</a>{% endif %}
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href={{ path("app_logout") }}>Odhlásit</a>
+                        {% if is_granted('ROLE_USER') %} <a class="nav-link" href={{ path("articles_list") }}>Časopis</a>{% endif %}
+                    </li>
+                    <li class="nav-item active">
+                        {% if is_granted("ROLE_ADMIN") %} <a class="nav-link" href="{{ path("app_user_create") }}">Přidat uživatele</a>{% endif %}
+                    </li>
+                    <li class="nav-item active" style="position:absolute; right:0; margin-right:100px;">
+                        {% if is_granted("ROLE_USER") %} <a class="nav-link" href="{{ path("app_user_update") }}">Upravit Profil</a>{% endif %}
+                    </li>
+                    <li class="nav-item active" style="position:absolute; right:0;">
+                        {% if is_granted('ROLE_USER') %} <a class="nav-link" href={{ path("app_logout") }}>Odhlásit</a>{% endif %}
+                    </li>
+                    {% if not app.user %}
+                        <li class="nav-item active" style="position:absolute; right:0;">
+                            <a class="nav-link" href={{ path("app_login") }}>Přihlásit se</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item active" style="position:absolute; right:0; margin-right:150px;">
+                        <a class="nav-link" href="mailto:nepis@plsfaktne.cz" style="color:blue;">SEM PIŠTĚ <small style="font-size:5px;">čuráci</small></a>
                     </li>
                 </ul>
             </div>
         </nav>
     {% endblock %}
+    {% for label, messages in app.flashes(['warning', 'error', 'success']) %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

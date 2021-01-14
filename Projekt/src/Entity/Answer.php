@@ -33,6 +33,11 @@ class Answer
      */
     private $question;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="answers")
+     */
+    private $article;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,6 +75,18 @@ class Answer
     public function setQuestion(?Question $question): self
     {
         $this->question = $question;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): self
+    {
+        $this->article = $article;
 
         return $this;
     }

@@ -81,12 +81,19 @@ class Article
      */
     private $state;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Answer::class, mappedBy="article", cascade="remove")
+     *
+     */
+    private $answers;
+
 
     public function __construct()
     {
         $this->review = new ArrayCollection();
         $this->magazine = new ArrayCollection();
         $this->state = new ArrayCollection();
+        $this->answers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -289,6 +296,36 @@ class Article
     public function setState(?State $state): self
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Answer[]
+     */
+    public function getAnswers(): Collection
+    {
+        return $this->answers;
+    }
+
+    public function addAnswer(Answer $answer): self
+    {
+        if (!$this->answers->contains($answer)) {
+            $this->answers[] = $answer;
+            $answer->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnswer(Answer $answer): self
+    {
+        if ($this->answers->removeElement($answer)) {
+            // set the owning side to null (unless already changed)
+            if ($answer->getArticle() === $this) {
+                $answer->setArticle(null);
+            }
+        }
 
         return $this;
     }

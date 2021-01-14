@@ -40,6 +40,31 @@ class Review
      */
     private $article;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $category_1_rating;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $category_2_rating;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $category_3_rating;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $category_4_rating;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $category_5_rating;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -106,6 +131,66 @@ class Review
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function getCategory1Rating(): ?int
+    {
+        return $this->category_1_rating;
+    }
+
+    public function setCategory1Rating(int $category_1_rating): self
+    {
+        $this->category_1_rating = $category_1_rating;
+
+        return $this;
+    }
+
+    public function getCategory2Rating(): ?int
+    {
+        return $this->category_2_rating;
+    }
+
+    public function setCategory2Rating(int $category_2_rating): self
+    {
+        $this->category_2_rating = $category_2_rating;
+
+        return $this;
+    }
+
+    public function getCategory3Rating(): ?int
+    {
+        return $this->category_3_rating;
+    }
+
+    public function setCategory3Rating(int $category_3_rating): self
+    {
+        $this->category_3_rating = $category_3_rating;
+
+        return $this;
+    }
+
+    public function getCategory4Rating(): ?int
+    {
+        return $this->category_4_rating;
+    }
+
+    public function setCategory4Rating(int $category_4_rating): self
+    {
+        $this->category_4_rating = $category_4_rating;
+
+        return $this;
+    }
+
+    public function getCategory5Rating(): ?int
+    {
+        return $this->category_5_rating;
+    }
+
+    public function setCategory5Rating(int $category_5_rating): self
+    {
+        $this->category_5_rating = $category_5_rating;
 
         return $this;
     }
